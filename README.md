@@ -1,5 +1,6 @@
 # Stripe Payment Gateway Integration with Product Management
-
+<img width="953" alt="image" src="https://github.com/user-attachments/assets/f896331e-5d39-46a3-b484-56433a56b29a" />
+</br>
 <img width="740" alt="image" src="https://github.com/user-attachments/assets/0a2b7fba-e112-4092-8c2e-e4290c1d4ff9" />
 
 ## Description
