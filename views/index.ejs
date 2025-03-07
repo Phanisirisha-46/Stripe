@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Management</title>
+    <title>Payment Management</title>
     <script defer>
         async function deleteProduct(id) {
             await fetch(`/delete/${id}`, { method: 'DELETE' });
@@ -11,9 +11,9 @@
         }
 
         async function updateProduct(id) {
-            const newName = prompt("Enter new name:");
+            const newName = prompt("Enter new mentor name:");
             const newPrice = prompt("Enter new price:");
-            const newQuantity = prompt("Enter new quantity:");
+            const newQuantity = prompt("Enter new session no:");
             if (newName && newPrice && newQuantity) {
                 await fetch(`/update/${id}`, {
                     method: 'PUT',
@@ -24,35 +24,24 @@
             }
         }
 
-        function calculateBill() {
-            let total = 0;
-            const priceElements = document.querySelectorAll(".product-price");
-            priceElements.forEach(priceEl => {
-                total += parseFloat(priceEl.textContent);
-            });
-
-            const perPerson = (total / 4).toFixed(2);
-
-            document.getElementById("totalAmount").textContent = `Total Amount: $${total.toFixed(2)}`;
-            document.getElementById("perPersonAmount").textContent = `Each Person Pays: $${perPerson}`;
-        }
+       
     </script>
 </head>
 <body style="font-family: Arial, sans-serif; margin: 20px; padding: 20px; text-align: center;">
 
-    <h1 style="color: #333;">Product Management</h1>
+    <h1 style="color: #333;">Payment Process</h1>
 
     <!-- Form to Add Product -->
     <form action="/add" method="POST" style="margin: 20px 0;">
-        <input type="text" name="name" placeholder="Product Name" required style="margin: 5px; padding: 10px;">
+        <input type="text" name="name" placeholder="Mentor Name" required style="margin: 5px; padding: 10px;">
         <input type="number" name="price" placeholder="Price (USD)" required style="margin: 5px; padding: 10px;">
-        <input type="number" name="quantity" placeholder="Quantity" required style="margin: 5px; padding: 10px;">
+        <input type="number" name="quantity" placeholder="Session no" required style="margin: 5px; padding: 10px;">
         <button type="submit" style="padding: 10px; background-color: #28a745; color: white; border: none; cursor: pointer;">
-            Add Product
+            Add Payment
         </button>
     </form>
 
-    <h2 style="color: #444;">Product List</h2>
+    <h2 style="color: #444;">Payment List</h2>
     <ul style="list-style: none; padding: 0;">
         <% products.forEach(product => { %>
             <li style="margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
@@ -69,10 +58,7 @@
         <% }) %>
     </ul>
 
-    <button onclick="calculateBill()" 
-        style="margin-top: 20px; padding: 10px; background-color: #17a2b8; color: white; border: none; cursor: pointer;">
-        Calculate Bill Split
-    </button>
+    
 
     <h3 id="totalAmount" style="color: #333; margin-top: 10px;"></h3>
     <h3 id="perPersonAmount" style="color: #333;"></h3>
